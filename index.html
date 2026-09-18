@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YUL'S BAKERY 입금 계좌</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8f5ef;
+      font-family: -apple-system, BlinkMacSystemFont,
+                   "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color: #2d2926;
+    }
+
+    .card {
+      width: calc(100% - 40px);
+      max-width: 420px;
+      background: white;
+      border-radius: 24px;
+      padding: 42px 28px 32px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 36px;
+    }
+
+    .bank {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .name {
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .account {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 17px;
+      background: #fee500;
+      color: #191919;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    #message {
+      height: 22px;
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .footer {
+      margin-top: 26px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="logo">YUL'S BAKERY 🥐</div>
+    <div class="subtitle">입금 계좌 안내</div>
+
+    <div class="bank">카카오뱅크</div>
+
+    <div class="name">
+      예금주&nbsp;&nbsp;<strong>선강현</strong>
+    </div>
+
+    <div class="account">
+      3333-03-4479053
+    </div>
+
+    <button onclick="copyAccount()">
+      계좌번호 복사하기
+    </button>
+
+    <div id="message"></div>
+
+    <div class="footer">
+      YUL'S BAKERY
+    </div>
+
+  </div>
+
+  <script>
+    function copyAccount() {
+      const account = "3333034479053";
+
+      navigator.clipboard.writeText(account).then(function() {
+        document.getElementById("message").innerText =
+          "✓ 계좌번호가 복사되었습니다.";
+      }).catch(function() {
+        const textarea = document.createElement("textarea");
+        textarea.value = account;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+
+        document.getElementById("message").innerText =
+          "✓ 계좌번호가 복사되었습니다.";
+      });
+    }
+  </script>
+
+</body>
+</html>
